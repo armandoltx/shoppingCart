@@ -7,11 +7,25 @@ import { db } from './mocks/db'
 function App() {
 
   const [products, setProducts] = useState(db)
+  const [filters, setFilters] = useState({
+    minPrice: 0
+  })
+
+  const filterProducts = (products) => {
+    return products.filter(product => {
+      return (product.price > filters.minPrice)
+    })
+  }
+
+  const filteredProducts = filterProducts(products)
 
   return (
     <>
       <Header />
-      <Products products={products} />
+      <Products
+        products={filteredProducts}
+        changeFilters={setFilters}
+        />
       <Footer/>
     </>
   )
