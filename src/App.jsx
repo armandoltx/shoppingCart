@@ -4,19 +4,14 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { Products } from './components/Products'
 import { db } from './mocks/db'
+import { useFilters } from './components/hooks/useFilter'
+
+
+
+
 function App() {
-
-  const [products, setProducts] = useState(db)
-  const [filters, setFilters] = useState({
-    minPrice: 0
-  })
-
-  const filterProducts = (products) => {
-    return products.filter(product => {
-      return (product.price > filters.minPrice)
-    })
-  }
-
+  const [products] = useState(db)
+  const { filterProducts, setFilters } = useFilters()
   const filteredProducts = filterProducts(products)
 
   return (
