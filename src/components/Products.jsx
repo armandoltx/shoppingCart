@@ -1,9 +1,15 @@
-import {Filters} from "./Filters";
-import {Product} from "./Product";
+import { useState } from 'react'
+import { Filters } from "./Filters";
+import { Product } from "./Product";
+import { db } from '../mocks/db';
+import { useFilters } from './hooks/useFilter';
 
 
+export function Products() {
 
-export function Products({ products, changeFilters }) {
+  const [products] = useState(db)
+  const { filterProducts, setFilters } = useFilters()
+  const filteredProducts = filterProducts(products)
 
   return(
     <main className="container-xl mt-5">
@@ -11,12 +17,12 @@ export function Products({ products, changeFilters }) {
 
       <div className="text-center">
         <Filters
-          changeFilters={changeFilters}
+          changeFilters={setFilters}
         />
       </div>
 
       <div className="row mt-5">
-        {products.map( product => (
+        {filteredProducts.map( product => (
           <Product
             key={product.id}
             product={product}

@@ -1,5 +1,4 @@
 export function Product({product}) {
-  console.log(product)
   return(
     <>
     <div className="col-md-6 col-lg-4 my-4 row align-items-center">
