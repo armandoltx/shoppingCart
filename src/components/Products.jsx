@@ -8,7 +8,7 @@ import { useFilters } from './hooks/useFilter';
 export function Products() {
 
   const [products] = useState(db)
-  const { filterProducts, setFilters } = useFilters()
+  const { filterProducts } = useFilters()
   const filteredProducts = filterProducts(products)
 
   return(
@@ -16,9 +16,7 @@ export function Products() {
       <h2 className="text-center">Nuestra Colección</h2>
 
       <div className="text-center">
-        <Filters
-          changeFilters={setFilters}
-        />
+        <Filters />
       </div>
 
       <div className="row mt-5">
