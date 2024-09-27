@@ -3,7 +3,7 @@ import {useCart} from "../hooks/useCart"
 import {useMemo} from "react"
 
 export function Cart() {
-  const { addToCart, cart } = useCart()
+  const { cart, addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } = useCart()
 
   // state derivado
   const isEmpty = useMemo( () => cart.length === 0, [cart] ) // se ejecutara solo cuando el carrito haya cambiado
@@ -12,7 +12,7 @@ export function Cart() {
   return(
     <>
       <div id="carrito" className="bg-white p-3">
-        {isEmpty() ? (
+        {isEmpty ? (
           <p className="text-center">El carrito esta vacio</p>
         ) : (
           <>
@@ -32,13 +32,21 @@ export function Cart() {
                     key={product.id}
                     product={product}
                     addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                    increaseQuantity={increaseQuantity}
+                    decreaseQuantity={decreaseQuantity}
                   />
 
                 ))}
               </tbody>
             </table>
             <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal()}</span></p>
-            <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+            <button
+              className="btn btn-dark w-100 mt-3 p-2"
+              onClick={clearCart}
+            >
+                Vaciar Carrito
+            </button>
           </>
         )}
 

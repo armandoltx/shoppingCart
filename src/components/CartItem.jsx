@@ -1,6 +1,6 @@
 
 
-export function CartItem({product}) {
+export function CartItem({ product, removeFromCart, increaseQuantity, decreaseQuantity }) {
   return (
     <>
       <tr>
@@ -19,6 +19,7 @@ export function CartItem({product}) {
           <button
               type="button"
               className="btn btn-dark"
+              onClick={() => decreaseQuantity(product.id)}
           >
               -
           </button>
@@ -26,6 +27,7 @@ export function CartItem({product}) {
           <button
               type="button"
               className="btn btn-dark"
+              onClick={() => increaseQuantity(product.id)}
           >
               +
           </button>
@@ -34,6 +36,7 @@ export function CartItem({product}) {
           <button
               className="btn btn-danger"
               type="button"
+              onClick={() => removeFromCart(product.id)}
           >
               X
           </button>
