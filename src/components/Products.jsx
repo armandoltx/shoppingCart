@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Filters } from "./Filters";
 import { Product } from "./Product";
 import { db } from '../mocks/db';
-import { useFilters } from './hooks/useFilter';
+import { useFilters } from '../hooks/useFilter'
 
 export function Products() {
   const [products] = useState(db)
