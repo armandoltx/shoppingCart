@@ -1,4 +1,7 @@
-export function Product({product, addToCart}) {
+import {useCart} from "./hooks/useCart"
+
+export function Product({product}) {
+  const { addToCart, cart } = useCart()
 
   return(
     <>
