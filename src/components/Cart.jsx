@@ -1,11 +1,12 @@
 import { CartItem } from "./CartItem"
 import {useCart} from "../hooks/useCart"
+import {useMemo} from "react"
 
 export function Cart() {
   const { addToCart, cart } = useCart()
 
   // state derivado
-  const isEmpty = () => cart.length === 0
+  const isEmpty = useMemo( () => cart.length === 0, [cart] ) // se ejecutara solo cuando el carrito haya cambiado
   const cartTotal = () => (cart.reduce( (total, item) => total + (item.quantity * item.price), 0 ))
 
   return(
