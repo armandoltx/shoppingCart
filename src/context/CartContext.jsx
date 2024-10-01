@@ -1,39 +1,8 @@
-import { createContext, useReducer } from "react";
-import { cartReducer, cartInitialState } from "../reducers/cart-reducer";
+import { createContext } from "react";
+import { useCartReducer } from "../hooks/useCartReducer";
+
 
 export const CartContext = createContext()
-
-function useCartReducer() {
-  const [state, dispatch] = useReducer(cartReducer, cartInitialState)
-  // console.log("00000")
-  // console.log(state)
-
-  const addToCart = product => dispatch({
-    type: 'ADD_TO_CART',
-    payload: product
-  })
-
-  const removeFromCart =  product => dispatch({
-    type: 'REMOVE_FROM_CART',
-    payload: product
-  })
-
-  const clearCart = () => dispatch({
-    type: 'CLEAR_CART'
-  })
-
-  const increaseQuantity = product => dispatch({
-    type: 'INCREASE_QUANTITY',
-    payload: product
-  })
-
-  const decreaseQuantity = product => dispatch({
-    type: 'DECREASE_QUANTITY',
-    payload: product
-  })
-
-  return { state, addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity }
-}
 
 export function CartProvider({ children }) {
   const { state, addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } = useCartReducer()
