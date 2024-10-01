@@ -19,7 +19,7 @@ export function CartItem({ product, removeFromCart, increaseQuantity, decreaseQu
           <button
               type="button"
               className="btn btn-dark"
-              onClick={() => decreaseQuantity(product.id)}
+              onClick={() => decreaseQuantity(product)}
           >
               -
           </button>
@@ -27,7 +27,7 @@ export function CartItem({ product, removeFromCart, increaseQuantity, decreaseQu
           <button
               type="button"
               className="btn btn-dark"
-              onClick={() => increaseQuantity(product.id)}
+              onClick={() => increaseQuantity(product)}
           >
               +
           </button>
@@ -36,7 +36,7 @@ export function CartItem({ product, removeFromCart, increaseQuantity, decreaseQu
           <button
               className="btn btn-danger"
               type="button"
-              onClick={() => removeFromCart(product.id)}
+              onClick={() => removeFromCart(product)}
           >
               X
           </button>
